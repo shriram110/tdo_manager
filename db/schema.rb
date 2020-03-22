@@ -32,5 +32,4 @@ ActiveRecord::Schema.define(version: 0) do
     t.date "due_date"
     t.boolean "completed"
   end
-
 end

@@ -16,16 +16,11 @@ class UsersController < ApplicationController
     password = params[:password]
     new_user = User.create!(name: name, email: email, password: password)
     render plain: "new user created with id number #{new_user.id}"
+  end
 
-    def login
-      email = params[:email]
-      password = params[:password]
-      user = User.find_by(email: email)
-      if (user.password == password)
-        render plain: "True"
-      else
-        render plain: "False"
-      end
-    end
+  def login
+    user = User.where("email=? and password=?", params[:email], params[:password])
+    response_text = (user.length != 0) ? "True" : "False"
+    render plain: response_text
   end
 end

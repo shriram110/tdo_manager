@@ -4,7 +4,7 @@
     <p class="TodoSectionTitle-RemainingCount"><%= todos.completed.count%>/<%= todos.count%> </p>
   </div>
   <ul>
-     <% todos.each do |todo|%>
+      <% todos.each do |todo|%>
         <%if todo.due_date >= Date.today or !todo.completed%>
          <li class="TodoItem">
            <label class="TodoItem-Container">

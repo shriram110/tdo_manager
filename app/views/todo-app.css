@@ -55,6 +55,11 @@ body{
   border-radius: 4px;
   border: 1px solid #BFBBCC;
 }
+.TodoItem-DueDate{
+font-size: 10px;
+color:grey;
+margin-left: 10px;
+}
 .AddTodo-Button{
   font-size: 14px;
   color: white;

@@ -115,3 +115,6 @@ margin-left: 10px;
 .TodoSection{
   margin-bottom: 20px;
 }
+.Todo-Display{
+  text-decoration: line-through;
+}

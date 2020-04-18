@@ -5,15 +5,13 @@
   </div>
   <ul>
       <% todos.each do |todo|%>
-        <%if todo.due_date >= Date.today or !todo.completed%>
+
          <li class="TodoItem">
            <label class="TodoItem-Container">
-              <% if todo.completed %>
-                <input class="TodoItem-CheckBox" type="checkbox" checked> <p style="text-decoration:line-through;"><%= todo.todo_text%></p>
-              <%else%>
-                <input class="TodoItem-CheckBox" type="checkbox"> <%= todo.todo_text%>
-              <%end%>
-
+              <form action="/todo/<%= todo.id%>" method="PUT">
+                <input class="TodoItem-CheckBox" type="checkbox" <%= todo.completed ? "checked" : "" %> />
+              </form>
+                <p class=<%=todo.completed ? "Todo-Display" : "" %>><%= todo.todo_text%></p>
               <% if show_due_date %>
                   <p class="TodoItem-DueDate"><%= todo.due_date.to_s(:short) %></p>
               <%end%>
@@ -22,7 +20,7 @@
               </a>
            </label>
          </li>
-        <%end%>
+
       <%end%>
   </ul>
 </section>

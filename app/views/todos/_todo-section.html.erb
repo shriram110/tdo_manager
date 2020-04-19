@@ -1,26 +1,33 @@
 <section class="TodoSection">
   <div class="TodoSection-Title">
-    <p class="TodoSectionTitle-Text"> <%=section_title%> </p>
-    <p class="TodoSectionTitle-RemainingCount"><%= todos.completed.count%>/<%= todos.count%> </p>
+    <p class="TodoSectionTitle-Text"> <%= section_title %> </p>
+    <p class="TodoSectionTitle-RemainingCount">
+       <%= todos.completed.count %>/<%= todos.count %>
+    </p>
   </div>
   <ul>
-      <% todos.each do |todo|%>
-
+      <% todos.each do |todo| %>
          <li class="TodoItem">
            <label class="TodoItem-Container">
-              <form action="/todo/<%= todo.id%>" method="PUT">
-                <input class="TodoItem-CheckBox" type="checkbox" <%= todo.completed ? "checked" : "" %> />
+              <form action="/todo/<%= todo.id %>" method="PUT">
+                <input class="TodoItem-CheckBox"
+                       type="checkbox" <%= todo.completed ? "checked" : "" %>
+                />
               </form>
-                <p class=<%=todo.completed ? "Todo-Display" : "" %>><%= todo.todo_text%></p>
+                <p class=<%= todo.completed ? "Todo-Display" : "" %>>
+                   <%= todo.todo_text %>
+                </p>
               <% if show_due_date %>
-                  <p class="TodoItem-DueDate"><%= todo.due_date.to_s(:short) %></p>
-              <%end%>
+                  <p class="TodoItem-DueDate">
+                    <%= todo.due_date.to_s(:short) %>
+                  </p>
+              <% end %>
               <a class="TodoItem-Delete" href="javascript:void(0)">
                 <img src="trash-can-outline.svg">
               </a>
            </label>
          </li>
 
-      <%end%>
+      <% end %>
   </ul>
 </section>

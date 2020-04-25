@@ -9,25 +9,30 @@
       <% todos.each do |todo| %>
          <li class="TodoItem">
            <label class="TodoItem-Container">
-              <form action="/todo/<%= todo.id %>" method="PUT">
-                <input class="TodoItem-CheckBox"
-                       type="checkbox" <%= todo.completed ? "checked" : "" %>
-                />
-              </form>
-                <p class=<%= todo.completed ? "Todo-Display" : "" %>>
-                   <%= todo.todo_text %>
-                </p>
+              <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
+                 <%= check_box_tag(name="completed",
+                                    value=nil,
+                                    checked=todo.completed ? true : false ,
+                                    class: "TodoItem-CheckBox",
+                                    onclick: "this.form.submit()"
+                                  )
+                 %>
+              <% end %>
+              <p class=<%= todo.completed ? "Todo-Display" : "" %>>
+                 <%= todo.todo_text %>
+              </p>
               <% if show_due_date %>
                   <p class="TodoItem-DueDate">
                     <%= todo.due_date.to_s(:short) %>
                   </p>
               <% end %>
               <a class="TodoItem-Delete" href="javascript:void(0)">
-                <img src="trash-can-outline.svg">
+                <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
+                  <%= image_submit_tag('trash-can-outline.svg') %>
+                <% end %>
               </a>
            </label>
          </li>
-
       <% end %>
   </ul>
 </section>

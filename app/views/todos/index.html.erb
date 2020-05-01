@@ -1,6 +1,6 @@
 <main class="TodoMain">
     <article class="TodoArticle">
-        <h1 class="My_Todo"> My Todo-List</h1>
+        <h1 class="My_Todo"> My Todo-List </h1>
         <%= form_with(url: "/todos", method: "post",class: "Add-Todo") do %>
             <%= text_field_tag("todo_text",
                                 nil,

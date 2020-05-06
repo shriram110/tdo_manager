@@ -1,33 +1,33 @@
 <main class="TodoMain">
-    <article class="TodoArticle">
-        <h1 class="My_Todo"> My Todo-List </h1>
-        <%= form_with(url: "/todos", method: "post",class: "Add-Todo") do %>
-            <%= text_field_tag("todo_text",
-                                nil,
-                                placeholder:"What's next?",
-                                class: "AddTodo-Text"
-                              )
-            %>
-            <%= date_field_tag("due_date", nil, class: "AddTodo-Date") %>
-            <%= submit_tag("Add",class: "AddTodo-Button") %>
-        <% end %>
-        <%= render partial:"todo-section" , locals: {
-                                                     section_title: " Overdue",
-                                                     todos: @todos.overdue,
-                                                     show_due_date: true
-                                                    }
+	<article class="TodoArticle">
+    <h1 class="My_Todo"> My Todo-List </h1>
+      <%= form_with(url: "/todos", method: "post",class: "Add-Todo") do %>
+        <%= text_field_tag("todo_text",
+                            nil,
+                            placeholder:"What's next?",
+                            class: "AddTodo-Text"
+                          )
         %>
-        <%= render partial:"todo-section" , locals: {
-                                                     section_title: " Due today",
-                                                     todos: @todos.due_today,
-                                                     show_due_date: false
-                                                    }
-        %>
-        <%= render partial:"todo-section" , locals: {
-                                                     section_title: " Due later",
-                                                     todos: @todos.due_later,
-                                                     show_due_date: true
-                                                    }
-        %>
-    </article>
+        <%= date_field_tag("due_date", nil, class: "AddTodo-Date") %>
+        <%= submit_tag("Add",class: "AddTodo-Button") %>
+      <% end %>
+      <%= render partial:"todo-section" , locals: {
+                                                    section_title: " Overdue",
+                                                    todos: @todos.overdue,
+                                                    show_due_date: true
+                                                  }
+      %>
+      <%= render partial:"todo-section" , locals: {
+                                                   section_title: " Due today",
+                                                   todos: @todos.due_today,
+                                                   show_due_date: false
+                                                  }
+      %>
+      <%= render partial:"todo-section" , locals: {
+                                                   section_title: " Due later",
+                                                   todos: @todos.due_later,
+                                                   show_due_date: true
+                                                  }
+      %>
+  </article>
 </main>

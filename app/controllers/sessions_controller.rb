@@ -8,9 +8,11 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:current_user_id] = user.id
+      flash[:notice] = "Login Successful!!"
       redirect_to "/"
     else
-      render plain: "Incorrect Password"
+      flash[:error] = "Your login attempt is invalid . Please retry"
+      redirect_to new_sessions_path
     end
   end
 

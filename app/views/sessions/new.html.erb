@@ -4,7 +4,7 @@
   <%= form_with url: sessions_path do |form|%>
   	<div class="Form-section">
       <p class="Form-InputLabel">Email Id: </p>
-      <%= form.email_field :email, class: "Form-input"%>
+      <%= form.email_field :email, class: "Form-input" ,autofocus: "autofocus"%>
     </div>
     <div class="Form-section">
       <p class="Form-InputLabel">Password: </p>

@@ -5,7 +5,8 @@
         <%= text_field_tag("todo_text",
                             nil,
                             placeholder:"What's next?",
-                            class: "AddTodo-Text"
+                            class: "AddTodo-Text",
+                            autofocus: "autofocus"
                           )
         %>
         <%= date_field_tag("due_date", nil, class: "AddTodo-Date") %>
@@ -18,15 +19,15 @@
                                                   }
       %>
       <%= render partial:"todo-section" , locals: {
-                                                   section_title: " Due today",
-                                                   todos: @todos.due_today,
-                                                   show_due_date: false
+                                                    section_title: " Due today",
+                                                    todos: @todos.due_today,
+                                                    show_due_date: false
                                                   }
       %>
       <%= render partial:"todo-section" , locals: {
-                                                   section_title: " Due later",
-                                                   todos: @todos.due_later,
-                                                   show_due_date: true
+                                                    section_title: " Due later",
+                                                    todos: @todos.due_later,
+                                                    show_due_date: true
                                                   }
       %>
   </article>
